@@ -1,0 +1,25 @@
+\documentclass[10pt]{article}
+\usepackage{physics, amsmath, amssymb, amsthm, esvect, environ}
+\usepackage{parskip, hyperref, siunitx, multicol}
+
+\usepackage{graphicx, float}
+\graphicspath{{./figures/}}
+
+\usepackage{xcolor, tcolorbox}
+\definecolor{crimson}{RGB}{153, 0, 0}
+
+\usepackage[colorinlistoftodos, textsize=small]{todonotes}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=crimson,
+    filecolor=crimson, 
+    urlcolor=crimson,
+    pdftitle={pqm},
+}
+
+\newcommand{\thm}[1]{\textit{Theorem}: #1}
+
+\begin{document}
+\input{sections/ch3.tex}
+\end{document}

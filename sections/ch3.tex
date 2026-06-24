@@ -1,0 +1,95 @@
+\begin{enumerate}
+\item[3.1] \thm{$$\bra{p}\hat{T} = \exp(\frac{-ibp}{\hbar})\bra{p}.$$}
+  \begin{proof}
+    Given
+    \begin{equation}
+      \bra{x} \hat{T} = \bra{x - b},
+    \end{equation}
+    we can expand with
+    \begin{align*}
+      \bra{p} \hat{T} &= \sum_x \braket{p}{x} \bra{x} \hat{T} \\
+      &= \int_{-\infty}^{\infty} \exp(\frac{-ipx}{\hbar}) \bra{x - b} \dd{x}
+    \end{align*}
+    and if we let $\xi = x - b$ and subsequently $x = \xi + b$ and $\dd{x} = \dd{\xi}$,
+    \begin{align*}
+      \bra{p} \hat{T} &= \int_{-\infty}^{\infty} \exp(\frac{-ip(\xi + b)}{\hbar}) \bra{\xi} \dd{\xi} \\
+      &= \int_{-\infty}^{\infty} \exp(\frac{-ip\xi}{\hbar}) \exp(\frac{-ipb}{\hbar}) \bra{\xi} \dd{\xi} \\
+      &= \exp(\frac{-ipb}{\hbar}) \int_{-\infty}^{\infty} \exp(\frac{-ip\xi}{\hbar}) \bra{\xi} \dd{\xi}
+    \end{align*}
+    and the second term is an equivalent definition of $\bra{p}$ as $\xi$ lies in position-space, simplifying to
+    \begin{align*}
+      \bra{p} \hat{T} &= \exp(\frac{-ipb}{\hbar}) \bra{p}.
+    \end{align*}
+  \end{proof}
+\item[3.2] \thm{$$\bra{p} \hat{D} = \frac{ip}{\hbar} \bra{p}.$$}
+  \begin{proof}
+    Given the definition
+    \begin{equation}
+      \bra{x} \hat{D} = \dv{x} \bra{x},
+    \end{equation}
+    we can once again expand
+    \begin{align*}
+      \bra{p} \hat{D} &= \sum_x \braket{p}{x} \bra{x} \hat{D} \\
+      &= \int_{-\infty}^{\infty} \exp(\frac{-ipx}{\hbar}) \dv{x} \bra{x} \dd{x}
+    \end{align*}
+    Using integration by parts, we can set
+    \begin{align*}
+      u &= \exp(-\frac{ipx}{\hbar}) & \dd{u} &= -\frac{ip}{\hbar} \exp(\frac{-ipx}{\hbar}) \dd{x} \\
+      \dd{v} &= \dv{x} \bra{x} \dd{x} & v &= \bra{x}
+    \end{align*}
+    yielding the equation
+    \begin{align*}
+      \int_{-\infty}^{\infty} \exp(\frac{-ipx}{\hbar}) \dv{x} \bra{x} \dd{x}
+      &= \exp(-\frac{ipx}{\hbar}) \bra{x} \bigg\rvert_{-\infty}^{\infty} - \int_{-\infty}^{\infty} -\frac{ip}{\hbar} \exp(\frac{-ipx}{\hbar}) \bra{x} \dd{x} \\
+      &= \exp(-\frac{ipx}{\hbar}) \bra{x} \bigg\rvert_{-\infty}^{\infty} + \frac{ip}{\hbar} \int_{-\infty}^{\infty} \exp(\frac{-ipx}{\hbar}) \bra{x} \dd{x}
+    \end{align*}
+    As $\lim_{x \to \pm \infty} \exp(-ipx/\hbar) = 0$, both terms simplify to
+    \begin{align*}
+      \bra{p} \hat{D} &= \frac{ip}{\hbar} \bra{p}.
+    \end{align*}
+  \end{proof}
+\item[3.3] The mirror reflection operator $\hat{R}$ produces the reflection about the
+  origin of any function in $x$-space. It is called the parity operator in physics.
+  Its $x$-space instruction is $\bra{x} \hat{R} = \bra{-x}.$ What is its $p$-space
+  instruction?
+
+    Suppose we have a state $\psi$,
+    \begin{align*}
+      \bra{p} \hat{R} \ket{\psi}
+      &= \sum_x \braket{p}{x} \bra{x} \hat{R} \ket{\psi} \\
+      &= \int_{-\infty}^{\infty} \exp(-\frac{ipx}{\hbar}) \braket{-x}{\psi} \dd{x}
+    \end{align*}
+    Now let $\xi = -x$, producing
+    \begin{align*}
+      \bra{p} \hat{R} \ket{\psi}
+      &= -\int_{-\infty}^{\infty} \exp(\frac{ip\xi}{\hbar}) \braket{\xi}{\psi} \dd{\xi} \\
+      &= -\int_{\infty}^{-\infty} \exp(-\frac{i(-p)\xi}{\hbar}) \braket{\xi}{\psi} \dd{\xi} \\
+      &= \braket{-p}{\psi}
+    \end{align*}
+  \item[3.4-1] Given $\hat{\tau} \ket{p} = \ket{p + Q}$ where $Q = h/L$.
+    \thm{$$\bra{p} \hat{\tau} = \bra{p - Q}.$$}
+    \begin{proof}
+      \bra{p} \hat{\tau} = (\hat{\tau} \ket{p})^\star
+      = \bra{p} \hat{\tau}^\dagger = \bra{p - Q}
+    \end{proof}
+
+  \item[3.4-2] \thm{$$\bra{x} \hat{\tau} =  \exp(\frac{iQx}{\hbar}) \bra{x}$$}
+    \begin{proof}
+      \begin{align*}
+        \bra{x} \hat{\tau} &= \sum_p \braket{x}{p} \bra{p} \hat{\tau} = \sum_p (\braket{p}{x})^\star \bra{p} \hat{\tau} \\
+        &= \sum_p \exp(\frac{ipx}{\hbar}) \bra{p - Q} 
+      \end{align*}
+      Now let $p' = p - Q$,
+      \begin{align*}
+        \bra{x} \hat{\tau} &= \sum_p \exp(\frac{i(p' + Q)x}{\hbar}) \bra{p'} \\
+        &= \sum_p \exp(\frac{ip'x}{\hbar}) \exp(\frac{iQx}{\hbar}) \bra{p'} \\
+        &= \exp(\frac{iQx}{\hbar}) \sum_p \exp(\frac{ip'x}{\hbar}) \bra{p'} \\
+        &= \exp(\frac{iQx}{\hbar}) \bra{x}
+      \end{align*}
+    \end{proof}
+  \item[3.5-1] \thm{$$\bra{x} \hat{\tau} \hat{D} \ket{\psi} = \exp(\frac{iQx}{\hbar}) \dv{\psi}{x}$$}
+    \begin{proof}
+      \bra{x} \hat{\tau} \hat{D} \ket{\psi} = \dv{x} \bra{x} \hat{\tau} \ket{\psi}
+      = \exp(\frac{iQx}{\hbar}) \dv{x} \braket{x}{\psi}.
+    \end{proof}
+\end{enumerate}
