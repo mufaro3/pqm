@@ -1,0 +1,45 @@
+\begin{enumerate}
+\item[7.1] \thm{$\hat{T} = e^{-b\hat{D}}$}
+  \begin{proof}
+    \begin{align*}
+      \bra{p} \exp(-b\hat{D}) &= \bra{p} \exp(-bD(p))
+    \end{align*}
+    where $D(p) = ip/\hbar$ is the eigenvalue of $\hat{D}$ for $\bra{p}$, and knowing that
+    \begin{equation}
+      \bra{p} \hat{T} = \exp(\frac{-ibp}{\hbar}) \bra{p}
+    \end{equation}
+    from problem 3.1,
+    \begin{align*}
+      \bra{p} \hat{T} = \exp(-bD(p)) \bra{p} = \exp(-b\hat{D}) \bra{p},
+    \end{align*}
+    thus
+    \begin{align*}
+      \hat{T} = e^{-b\hat{D}}.
+    \end{align*}
+  \end{proof}
+\item[7.2] \thm{$\bra{x} \hat{p} \ket{\psi} = \bra{x} \hat{p} \hat{T} \ket{\psi}$}
+  \begin{proof}
+    Given that $\hat{T} = e^{-b\hat{D}}$ per problem 7.1, $\braket{x}{\psi}$ and $\bra{x} \hat{T} \ket{\psi}$ differ by only the phase $e^{-b\hat{D}}$ which cannot have any effect on the probability as $\forall \theta, |e^{i\theta}|^2 = 1$.
+  \end{proof}
+\item[7.3] \thm{$\forall \psi, \forall t$, $|\braket{E}{\psi}|^2 = |\bra{E} \hat{U}_t \ket{\psi}|^2$.}
+  \begin{proof}
+    $\hat{U}_t = \exp(\frac{-it\hat{H}}{\hbar})$ is a unit vector on the complex plane, so it cannot have any effect on the probability.
+  \end{proof}
+\item[7.4] What is the characteristic frequency $\Omega/2\pi$ for a neutron in a magnetic field of $\SI{1}{\kilo\gauss}$? In what region of the electromagnetic spectrum is this: radio, microwave, infrared, visible, or x-ray?
+
+  The characteristic frequency is
+  \begin{equation*}
+    \omega = \frac{B}{2\pi} \abs{\Omega} = \frac{B}{2\pi} \abs{\frac{g_n e}{2 m_n}}
+    = \frac{\SI{1E3}{\kilo\gauss}}{2\pi}
+    \abs{\frac{(-3.83)(\SI{1.60E-19}{\coulomb})}
+         {2(\SI{1.67E-27}{\kilo\gram})}}
+    \simeq \SI{2.92}{\mega\hertz}
+  \end{equation*}
+  and this is a radiowave.
+\item[7.5] \thm{$\hat{U}_t \ket{\mu = 1/2} = \frac{\hat{U}_t}{\sqrt{2}}(\ket{m = 1/2} + i\ket{m = -1/2})$ where $\mu$ and $m$ are eigenvalues of $\hat{S}_y$ and $\hat{S}_z$ respectively.}
+  \begin{proof}
+    The unit time transform can be removed from both sides, so the proof is just
+    $$\ket{\mu = 1/2} = \ket{m = 1/2} + i\ket{m = -1/2}$$
+    and this can be proven using the change-of-basis matrix from $\eig \hat{S}_y$ to $\eig \hat{S}_z$. This can be produed using the spin-$1/2$ rotation operator 
+  \end{proof}
+\end{enumerate}
