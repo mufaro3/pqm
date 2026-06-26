@@ -39,7 +39,95 @@
 \item[7.5] \thm{$\hat{U}_t \ket{\mu = 1/2} = \frac{\hat{U}_t}{\sqrt{2}}(\ket{m = 1/2} + i\ket{m = -1/2})$ where $\mu$ and $m$ are eigenvalues of $\hat{S}_y$ and $\hat{S}_z$ respectively.}
   \begin{proof}
     The unit time transform can be removed from both sides, so the proof is just
-    $$\ket{\mu = 1/2} = \ket{m = 1/2} + i\ket{m = -1/2}$$
-    and this can be proven using the change-of-basis matrix from $\eig \hat{S}_y$ to $\eig \hat{S}_z$. This can be produed using the spin-$1/2$ rotation operator 
+    $$\ket{\mu = 1/2} = \frac{1}{\sqrt{2}} \ket{m = 1/2} + \frac{i}{\sqrt{2}} \ket{m = -1/2}$$
+    and this can be proven using the change-of-basis matrix from $\eig \hat{S}_y$ to $\eig \hat{S}_z$. This can be produed using the half-integer spinor rotation operator
+    \begin{equation}
+      \hat{R}(\theta,\hat{n}) = \exp(-\frac{i\theta}{2} \va{\sigma} \vdot \hat{n})
+    \end{equation}
+    where $\theta$ is the rotation angle, $\hat{n}$ is the axis of rotation (in this case, the $x$-axis), and $\va{\sigma} = (\sigma_x, \sigma_y, \sigma_z)$ is a vector of the Pauli matrices for each axis. For a half-integer spin on the $x$-axis, this simplifies (via a Taylor expansion not shown) to
+    \begin{equation}
+      \hat{R}_x(\theta) =
+      I \cos \frac{\theta}{2} - i \sigma_x \sin \frac{\theta}{2} =
+      \begin{bmatrix}
+        \cos \frac{\theta}{2} & -i \sin \frac{\theta}{2} \\
+        -i\sin \frac{\theta}{2} & \cos \frac{\theta}{2}
+      \end{bmatrix}.
+    \end{equation}
+    Thus, given that we want a counterclockwise rotation from the
+    $y$-axis to the $z$-axis, we need to compute $\hat{R}_x(-\pi/2)$,
+    which is
+    \begin{equation*}
+      \hat{R}_x(-\pi/2) = \frac{1}{\sqrt{2}} \begin{bmatrix}
+        1 & i \\ i & 1
+      \end{bmatrix}
+    \end{equation*}
+    and then, taking $\ket{\mu = 1/2}$ to be $(1$ $0)^T$ in the $y$-basis,
+    we can use $\hat{R}_{x}(-\pi/2)$ as the change-of-basis matrix from
+    the $y$-basis to the $z$-basis as
+    \begin{equation*}
+      \hat{R}_x(-\pi/2) \binom{1}{0} = \frac{1}{\sqrt{2}} \binom{1}{i},
+    \end{equation*}
+    which, written out, is equivalent to
+    \begin{equation*}
+      \ket{\mu = 1/2} = \frac{1}{\sqrt{2}} \ket{m = 1/2} + \frac{i}{\sqrt{2}} \ket{m = -1/2}.
+    \end{equation*}
   \end{proof}
+\item[7.6] A neutron spinning initially in the $+y$-direction, $(\mu = 1/2)$, spends time $t$ in a $z$-direction magnetic field of strength $B$. What is the probability of finding the initial spin $(\mu = 1/2)$ at time $t$?
+
+  This probability boils down to computing $||\bra{\mu = 1/2} \hat{U}_t \ket{\mu = 1/2}||^2$, so all we need to compute is $\bra{\mu = 1/2} \hat{U}_t \ket{\mu = 1/2}$. First, the time-evolution operator can be expanded to
+  $$\hat{U}_t = \exp(\frac{-i t \hat{H}}{\hbar}) = \exp(\frac{-i t \Omega \hat{S}_z}{\hbar})$$
+  And given that the hamiltonian can only operate on states defined in the $z$-axis, the time-evolved operator can be expressed using equation 7.13 as
+  \begin{align*}
+    U_t \ket{\mu = \frac{1}{2}} &= \frac{1}{\sqrt{2}} \exp(\frac{-it \Omega}{2}) \ket{m=\frac{1}{2}} + \frac{i}{\sqrt{2}} \exp(\frac{it\Omega}{2}) \ket{m=-\frac{1}{2}}
+  \end{align*}
+  and similarly to the procedure described in the previous problem, we can
+  then calculate $\bra{\mu = 1/2} U_t \ket{\mu = 1/2}$ by performing a
+  rotation by $\theta=1/2$ along the $x$-axis, i.e., we can use
+  $\hat{R}_x(\pi/2)$ as the $z \to y$ change-of-basis matrix:
+  \begin{equation*}
+    \hat{R}_x(\pi/2) = \frac{1}{\sqrt{2}} \begin{bmatrix}
+      1 & -i \\ -i & 1
+    \end{bmatrix}
+  \end{equation*}
+  Thus, expressing $U_t \ket{\mu = 1/2}$ in the $z$-basis yields
+  \begin{equation*}
+    \hat{U}_t \ket{\mu = 1/2} \equiv \frac{1}{\sqrt{2}} \binom{ e^{-it\Omega/2} }{ ie^{it\Omega/2} }
+  \end{equation*}
+  and if we then perform the rotation into the $y$-axis using $\hat{R}_x(\theta/2)$
+  \begin{equation*}
+    \hat{R}_x(\pi/2) \hat{U}_t \ket{\mu = 1/2} = \frac{1}{2} \binom{ \lambda + \lambda^{-1} }{ i(\lambda - \lambda^{-1}) }
+  \end{equation*}
+  where $\lambda = e^{it\Omega/2}$, or equivalently,
+  \begin{equation*}
+    \hat{R}_x(\pi/2) \hat{U}_t \ket{\mu = 1/2} = \binom{ \cosh(it\Omega/2) }{ i\sinh(it\Omega/2) } = \binom{ \cos(t\Omega/2) }{ i\sin(t\Omega/2) },
+  \end{equation*}
+  and thus, the raw amplitude is
+  $$\bra{\mu = 1/2} U_t \ket{\mu = 1/2} = \cos(t\Omega/2)$$
+  and the probability is
+  $$\abs{\bra{\mu = 1/2} U_t \ket{\mu = 1/2}}^2 = \cos^2(t\Omega/2) = \frac{1}{2}(1 + \cos \Omega t)$$
+  by the double-angle formula.
+\item[7.7] \thm{$\exp(\frac{-it\hat{H}}{\hbar}) = 1 - \frac{it\hat{H}}{\hbar}$ for a stationary state where $E < \hbar / t$.}
+  \begin{proof}
+    This can be proven quickly with a simple Maclaurin expansion. The Maclaurin expansion of $e^x$ is
+    $$e^x = \sum_{n=0}^\infty \frac{x^n}{n!} = 1 + x + \frac{x^2}{2} + \dots,$$
+  \end{proof}
+  so therefore,
+  $$\exp(\frac{-it\hat{H}}{\hbar}) = 1 - \frac{it\hat{H}}{\hbar} + \frac{1}{2} \left( \frac{-it\hat{H}}{\hbar} \right)^2 + \dots$$
+  and as $E < \hbar/t$, then $t\hat{H}/h << 1$, so the only two important terms are the first two, meaning that
+  \begin{equation*}
+    \exp(\frac{-it\hat{H}}{\hbar}) \simeq 1 - \frac{it\hat{H}}{\hbar}
+  \end{equation*}
+\item[7.8] \thm{$\expval{A} = \bra{\psi} \hat{A} \ket{\psi}$ $\forall A, \forall \psi$.}
+  \begin{proof}
+    \begin{align*}
+      \bra{\psi} \hat{A} \ket{\psi}
+      &= \sum_A \braket{\psi}{A} \bra{A} \hat{A} \ket{\psi} &
+      &= \sum_A A \braket{\psi}{A} \braket{A}{\psi} \\
+      &= \sum_A A \braket{A}{\psi}^\star \braket{A}{\psi} &
+      &= \sum_A A \abs{\braket{A}{\psi}}^2 \\
+      &= \sum_A A P(A|\psi) &
+      &= \expval{A}
+    \end{align*}
+  \end{proof}
+\item[]
 \end{enumerate}
