@@ -129,5 +129,64 @@
       &= \expval{A}
     \end{align*}
   \end{proof}
-\item[]
+\item[7.9] Show that
+  \begin{align*}
+    \hat{U}_t \ket{k, \mu = \frac{1}{2}} =
+    &\frac{1}{\sqrt{2}}
+    \exp(-it\left( \frac{\Omega}{2} + \frac{\hbar k^2}{2 m_n} \right))
+    \ket{k, m=\frac{1}{2}} + \\
+    &\frac{i}{\sqrt{2}}
+    \exp(it\left( \frac{\Omega}{2} - \frac{\hbar k^2}{2 m_n} \right))
+    \ket{k, m=-\frac{1}{2}}
+  \end{align*}
+  where $\hat{H} = \frac{\hbar^2 \hat{k}^2}{2m_n} + \Omega \hat{S}_z$
+  \begin{proof}
+    \begin{align*}
+      \hat{U}_t
+      &= \exp(-\frac{it\hat{H}}{\hbar}) &
+      &= \exp(-\frac{it}{\hbar} \left[ \Omega \hat{S}_z + \frac{\hbar^2 \hat{k}^2}{2 m_n} \right] ) \\
+      &= \exp(-\frac{it}{\hbar} \left[ \Omega \hat{m} \hbar + \frac{\hbar^2 \hat{k}^2}{2 m_n} \right] ) &
+      &= \exp(-it \left[ \Omega \hat{m} + \frac{\hbar \hat{k}^2}{2m_n} \right] ),
+    \end{align*}
+    thus,
+    \begin{align*}
+      \hat{U}_t \ket{k,m=\frac{1}{2}} &= \exp(-it \left[ \frac{\Omega}{2} + \frac{\hbar k^2}{2m_n} \right] ) \ket{k,m=\frac{1}{2}} \\
+      \hat{U}_t \ket{k,m=-\frac{1}{2}} &= \exp(it \left[ \frac{\Omega}{2} - \frac{\hbar k^2}{2m_n} \right] ) \ket{k,m=-\frac{1}{2}} 
+    \end{align*}
+    and therefore, altogether,
+  \begin{align*}
+    \hat{U}_t \ket{k, \mu = \frac{1}{2}} =
+    &\frac{1}{\sqrt{2}}
+    \exp(-it\left( \frac{\Omega}{2} + \frac{\hbar k^2}{2 m_n} \right))
+    \ket{k, m=\frac{1}{2}} + \\
+    &\frac{i}{\sqrt{2}}
+    \exp(it\left( \frac{\Omega}{2} - \frac{\hbar k^2}{2 m_n} \right))
+    \ket{k, m=-\frac{1}{2}}
+  \end{align*}
+  \end{proof}
+\item[7.10] \thm{$$dk \abs{ \bra{k, \mu=1/2} \hat{U}_t \ket{k, \mu=1/2} }^2 dk = \abs{ \bra{\mu = 1/2} \hat{U}_t \ket{\mu = 1/2} }$$}
+  \begin{proof}
+    Let $\theta=\Omega/2$ and $\phi = \frac{\hbar k^2}{2 m_n}$, then
+    \begin{align*}
+      \hat{U}_t \ket{k,\mu = 1/2} &= \frac{e^{-it\theta} e^{-it\phi}}{\sqrt{2}} \ket{k,m=1/2} + \frac{i e^{it\theta} e^{-it\phi}}{\sqrt{2}} \ket{k,m=-1/2} \\
+      &= \frac{e^{-it\phi}}{\sqrt{2}} \left( e^{-it\theta} \ket{k,m=1/2} + ie^{it\theta} \ket{k,m=-1/2} \right) \\
+      &\equiv \frac{e^{-it\phi}}{\sqrt{2}} \binom{ e^{-it\theta} }{ ie^{it\theta} }
+    \end{align*}
+    Then, we could compute another $z \to y$ change-of-basis with $\hat{R}_x(\theta/2)$, but notice how the $k$-dependent term $e^{-it\phi}$ is a common coefficient to both the $m=1/2$ and $m=-1/2$ terms. Therefore, it will also be common to the $\mu=1/2$ and $\mu=-1/2$ terms afterward. Therefore, as $e^{-it\phi}$ is only a phase modifier (as $\abs{e^{i\theta}}^2=1$), this term cannot effect the final probability.
+  \end{proof}
+\item[7.12] \thm{$\bra{\beta} \hat{A} \ket{\beta} = \bra{\alpha} e^{i\hat{\theta}} \hat{A} e^{-i\hat{\theta}} \ket{\alpha}$ where $\ket{\beta} = \hat{U}_t \ket{\alpha} = e^{-i\hat{\theta}} \ket{\alpha}$ and $\hat{\theta} = t\hat{H}/\hbar$.}
+  \begin{proof}
+    \begin{align*}
+      \expval{A}
+      &= \bra{\beta} \hat{A} \ket{\beta} &
+      &= \ket{\beta}^\star \hat{A} \ket{\beta} \\
+      &= (\hat{U}_t \ket{\alpha})^\star \hat{A} \hat{U}_t \ket{\alpha} &
+      &= \bra{\alpha} \hat{U}_t^\dagger \hat{A} \hat{U}_t \ket{\alpha} \\
+      &= \bra{\alpha} e^{i\hat{\theta}} \hat{A} e^{-i\hat{\theta}} \ket{\alpha}
+    \end{align*}
+  \end{proof}
+\item[7.13] \thm{$$\bra{b} \hat{A} \ket{\beta} = \bra{a} e^{i\hat{\theta}} \hat{A} e^{-i\hat{\theta}} \ket{\alpha}$$ where $\ket{b} = \hat{U}_t \ket{a}$ and $\ket{\beta} = \hat{U}_t \ket{\alpha}$.}
+  \begin{proof}
+    Follows from the previous problem. Proof is obvious.
+  \end{proof}
 \end{enumerate}
